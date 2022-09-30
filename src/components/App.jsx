@@ -26,13 +26,10 @@ export class App extends Component {
     return Number(countPositiveFeedback);
   };
 
-  handleChange = e => {
-    const { name } = e.target;
+  handleChange = key => {
     this.setState(prevState => ({
-      [name]: prevState[name] + 1,
+      [key]: prevState[key] + 1,
     }));
-    this.countTotalFeedback();
-    this.PositiveFeedbackPercentage();
   };
 
   render() {
@@ -41,7 +38,7 @@ export class App extends Component {
       <>
         <Section title="Plese leave feedback">
           <FeedbackOptions
-            options={this.state}
+            options={Object.keys(this.state)}
             onLeaveFeedback={this.handleChange}
           />
         </Section>
